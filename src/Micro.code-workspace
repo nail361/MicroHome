@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "micro-app",
+			"path": "../../micro-app"
+		},
+		{
+			"name": "home-app",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"jest.disabledWorkspaceFolders": [
+			"Micro"
+		]
+	}
+}
