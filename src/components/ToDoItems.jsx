@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStore } from '../store/mainStore';
 import { observer } from 'mobx-react-lite';
-import ToDoItem from './TodoItem';
+import ToDoItem from './ToDoItem';
 
 const ToDoItems = observer(({ todo }) => {
   const store = useStore();
