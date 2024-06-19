@@ -2,9 +2,8 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - develop
 
 jobs:
   tests:
@@ -23,7 +22,7 @@ jobs:
         npm install
         npm run test
 
-  merge-to-master:
+  merge-to-main:
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +39,7 @@ jobs:
 
     - name: Merge develop to master
       run: |
-        git fetch origin master
-        git checkout master
+        git fetch origin main
+        git checkout main
         git merge --no-ff develop
-        git push origin master
+        git push origin main
