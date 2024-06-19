@@ -19,17 +19,26 @@ jobs:
     - name: Tests
       run: |
         npm install
-        npm run test
-    
-  merge:
+        npm run tess
+
+  merge-to-master:
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: develop
+        fetch-depth: 0 # Важно для merge
 
-      - name: Merge staging -> develop
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          target_branch: develop
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Configure Git
+      run: |
+        git config --global user.email "nail361@mail.ru"
+        git config --global user.name "nail361"
+
+    - name: Merge develop to master
+      run: |
+        git fetch origin master
+        git checkout master
+        git merge --no-ff develop
+        git push origin master
