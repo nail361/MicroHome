@@ -3,6 +3,8 @@ name: NodeJS with Webpack
 on:
   push:
     branches: [ "develop" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   tests:
