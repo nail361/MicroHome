@@ -4,7 +4,7 @@ import ToDo from './components/ToDo.jsx';
 
 const Header = lazy(() => import('MicroApp/Header'));
 
-// some changes to test CI 6
+// some changes to test CI 7
 const App = () => {
   return (
     <>
