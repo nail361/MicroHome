@@ -21,7 +21,7 @@ jobs:
     - name: Tests
       run: |
         npm install
-        npm run tess
+        npm run test
 
   merge-to-master:
     needs: tests # Запускать только если тест прошёл успешно
