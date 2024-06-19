@@ -23,18 +23,15 @@ jobs:
         npm install
         npm run test
     
-  # build:
-  #   runs-on: ubuntu-latest
-    
-  #   steps:
-  #   - uses: actions/checkout@v4
+  merge:
+    needs: tests # Запускать только если тест прошёл успешно
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
-  #   - name: install node
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: '16.14.0'
-
-  #   - name: Build
-  #     run: |
-  #       npm install
-  #       npm run build
+      - name: Merge staging -> develop
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}
