@@ -26,20 +26,12 @@ jobs:
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        ref: develop
-        fetch-depth: 0 # Важно для merge
-
-    - name: Configure Git
-      run: |
-        git config --global user.email "nail361@mail.ru"
-        git config --global user.name "nail361"
-
-    - name: Merge develop to master
-      run: |
-        git fetch origin main
-        git checkout main
-        git merge --no-ff develop
-        git push origin main
+      - name: checkout master branch
+      - uses: actions/checkout@main
+      - name: Merge develop -> main
+      - uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: develop
+          target_branch: main
+          github_token: ${{ github.token }}
