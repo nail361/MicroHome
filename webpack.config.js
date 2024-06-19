@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const webpack = require('webpack');
 const { dependencies } = require("./package.json");
 
 module.exports = {
@@ -37,8 +35,6 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
       filename: 'index.html',
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
       name: "HomeApp",
       remotes: {
