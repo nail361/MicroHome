@@ -34,8 +34,7 @@ jobs:
       - name: Merge develop into main
         uses: devmasx/merge-branch@1.4.0
         with:
-          type: now
+          type: pr
           from_branch: develop
           target_branch: main
-          message: Merge develop into main
           github_token: ${{ secrets.GITHUB_TOKEN }}
