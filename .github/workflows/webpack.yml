@@ -30,9 +30,9 @@ jobs:
         uses: actions/checkout@main
       
       - name: Merge develop -> main
-        uses: devmasx/merge-branch@v1.3.1
+        uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: develop
           target_branch: main
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
