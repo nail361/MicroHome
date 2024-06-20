@@ -23,6 +23,8 @@ jobs:
         npm run test
 
   merge-to-main:
+    permissions:
+      contents: write
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
