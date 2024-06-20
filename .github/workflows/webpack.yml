@@ -26,13 +26,15 @@ jobs:
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
-      - name: checkout master branch
-        uses: actions/checkout@main
-      
-      - name: Merge develop -> main
-        uses: devmasx/merge-branch@master
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          type: now
+          fetch-depth: 0 # Необходимо для полной истории коммитов
+
+      - name: Merge develop into main
+        uses: devmasx/merge-branch@v1.3.1
+        with:
           from_branch: develop
           target_branch: main
+          allow_ff: false # Отключает fast-forward merge
           github_token: ${{ secrets.GITHUB_TOKEN }}
