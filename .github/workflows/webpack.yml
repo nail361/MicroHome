@@ -32,6 +32,11 @@ jobs:
         uses: actions/checkout@main
 
       - run: echo "✅ Starting process to merge Develop into Main on the ${{ github.repository }}."
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "mail361@mail.ru"
+          git config --global user.name "Denis"
         
       - name: Merge develop into main
         run: |
