@@ -24,7 +24,7 @@ jobs:
 
   merge-to-main:
     permissions:
-      contents: write
+      contents: write # возможно не нужно
     needs: tests # Запускать только если тест прошёл успешно
     runs-on: ubuntu-latest
     steps:
