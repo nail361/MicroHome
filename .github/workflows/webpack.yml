@@ -27,14 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Необходимо для полной истории коммитов
+        uses: actions/checkout@main
 
+      - run: echo "✅ Starting process to merge Develop into Main on the ${{ github.repository }}."
+        
       - name: Merge develop into main
-        uses: devmasx/merge-branch@1.4.0
-        with:
-          type: pr
-          from_branch: develop
-          target_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch --unshallow
+          git checkout main
+          git pull
+          git merge develop -m "Github Actions - Auto-merge Develop to Main"
+          git push
+      - run: echo "📣 This job's status is ${{ job.status }}."
